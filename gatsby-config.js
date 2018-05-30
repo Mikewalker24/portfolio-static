@@ -1,6 +1,6 @@
-const config = require('./data/SiteConfig')
+const config = require('./data/SiteConfig');
 
-const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
+const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
 
 module.exports = {
   pathPrefix: config.pathPrefix,
@@ -13,8 +13,8 @@ module.exports = {
       description: config.siteDescription,
       image_url: `${config.siteUrl + pathPrefix}/logos/logo-512.png`,
       author: config.userName,
-      copyright: config.copyright
-    }
+      copyright: config.copyright,
+    },
   },
   plugins: [
     'gatsby-plugin-styled-components',
@@ -32,14 +32,22 @@ module.exports = {
         useACF: true,
         auth: {},
         // Set to true to debug endpoints on 'gatsby build'
-        verboseOutput: false
-      }
+        verboseOutput: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Raleway\:300`, // you can also specify font weights and styles
+        ],
+      },
     },
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
-        color: config.themeColor
-      }
+        color: config.themeColor,
+      },
     },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
@@ -61,16 +69,16 @@ module.exports = {
           {
             src: '/logos/logo-192x192.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: '/logos/logo-512x512.png',
             sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
-      }
+            type: 'image/png',
+          },
+        ],
+      },
     },
-    'gatsby-plugin-offline'
-  ]
-}
+    'gatsby-plugin-offline',
+  ],
+};
