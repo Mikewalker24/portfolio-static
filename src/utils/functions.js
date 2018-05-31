@@ -1,9 +1,13 @@
 export function getImageData(field) {
-    const { 
-      sizes, 
-      src, 
-      srcSet 
-    } = field.localFile.childImageSharp.sizes; 
+  const {
+    sizes,
+    src,
+    srcSet
+  } = field.localFile.childImageSharp.sizes;
 
-    return { sizes, src, srcSet };
+  return {
+    sizes,
+    src,
+    srcSet
+  };
 }

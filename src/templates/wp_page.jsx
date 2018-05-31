@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class wpPage extends Component {
   render() {
@@ -6,10 +6,10 @@ class wpPage extends Component {
       title: this.props.data.wordpressPage.title,
       content: this.props.data.wordpressPage.content,
       id: this.props.data.wordpressPage.id,
-      slug: this.props.data.wordpressPage.slug
-    }
+      slug: this.props.data.wordpressPage.slug,
+    };
 
-    console.log(pageNode)
+    console.log(pageNode);
 
     return (
       <div>
@@ -18,11 +18,11 @@ class wpPage extends Component {
           <div dangerouslySetInnerHTML={{ __html: pageNode.content }} />
         </main>
       </div>
-    )
+    );
   }
 }
 
-export default wpPage
+export default wpPage;
 
 /* eslint no-undef: "off"*/
 export const pageQuery = graphql`
@@ -45,4 +45,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

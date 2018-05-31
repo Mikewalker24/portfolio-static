@@ -1,31 +1,32 @@
 {
-  "extends": [
-    "prettier"
-  ],
+  "extends": ["airbnb", "prettier", "prettier/react"],
   "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 8,
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "impliedStrict": false,
+      "impliedStrict": true,
       "classes": true
     }
   },
   "env": {
     "browser": true,
-    "node": true,
-    "jquery": true
+    "jquery": true,
+    "node": true
   },
   "rules": {
+    "no-debugger": 0,
     "no-unused-vars": [
       1,
       {
         "argsIgnorePattern": "res|next|^err"
       }
     ],
-    "arrow-body-style": [
+    "arrow-body-style": [2, "as-needed"],
+    "no-unused-expressions": [
       2,
-      "as-needed"
+      {
+        "allowTaggedTemplates": true
+      }
     ],
     "no-param-reassign": [
       2,
@@ -45,16 +46,14 @@
     "consistent-return": 0,
     "react/display-name": 1,
     "react/react-in-jsx-scope": 0,
+    "react/prefer-stateless-function": 0,
     "react/forbid-prop-types": 0,
     "react/no-unescaped-entities": 0,
     "jsx-a11y/accessible-emoji": 0,
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
       }
     ],
     "radix": 0,
@@ -62,14 +61,7 @@
       2,
       {
         "hoist": "all",
-        "allow": [
-          "resolve",
-          "reject",
-          "done",
-          "next",
-          "err",
-          "error"
-        ]
+        "allow": ["resolve", "reject", "done", "next", "err", "error"]
       }
     ],
     "quotes": [
@@ -92,13 +84,9 @@
     "jsx-a11y/anchor-is-valid": [
       "warn",
       {
-        "aspects": [
-          "invalidHref"
-        ]
+        "aspects": ["invalidHref"]
       }
     ]
   },
-  "plugins": [
-    "prettier"
-  ]
+  "plugins": ["prettier"]
 }

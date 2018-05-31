@@ -36,14 +36,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `Raleway\:300`, // you can also specify font weights and styles
-        ],
-      },
-    },
-    {
       resolve: 'gatsby-plugin-nprogress',
       options: {
         color: config.themeColor,
@@ -51,7 +43,6 @@ module.exports = {
     },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    // 'gatsby-source-filesystem',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-twitter',
     'gatsby-plugin-sitemap',
@@ -65,8 +56,7 @@ module.exports = {
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: 'minimal-ui',
-        icons: [
-          {
+        icons: [{
             src: '/logos/logo-192x192.png',
             sizes: '192x192',
             type: 'image/png',

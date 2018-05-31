@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable */
 /* globals window CustomEvent */
 import React, { createElement } from "react"
-import { Transition } from "react-transition-group"
 import createHistory from "history/createBrowserHistory"
-
+import { Transition } from "react-transition-group"
 import getTransitionStyle from "./src/utils/getTransitionStyle"
 
 const timeout = 200
@@ -28,7 +27,11 @@ class ReplaceComponentRenderer extends React.Component {
     this.listenerHandler = this.listenerHandler.bind(this)
   }
 
-  listenerHandler(event) {
+  listenerHandler(event) {   
+    // no transition when loading homepage anchors
+    if (event.detail.pathname === '/') {
+      return
+    }
     const nextPageResources = this.props.loader.getResourcesForPathname(
       event.detail.pathname,
       nextPageResources => this.setState({ nextPageResources })
@@ -47,7 +50,7 @@ class ReplaceComponentRenderer extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.location.key !== nextProps.location.key) {
       this.setState({ exiting: false, nextPageResources: {} })
-    }
+    }    
   }
 
   render() {

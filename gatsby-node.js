@@ -7,12 +7,17 @@ const webpackLodashPlugin = require('lodash-webpack-plugin')
 // Will create pages for Wordpress pages (route : /{slug})
 // Will create pages for Wordpress posts (route : /{slug})
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+exports.createPages = ({
+  graphql,
+  boundActionCreators
+}) => {
+  const {
+    createPage
+  } = boundActionCreators
   return new Promise((resolve, reject) => {
     // First, query all the pages on your WordPress
     graphql(
-      `
+        `
         {
           allWordpressPage {
             edges {
@@ -26,7 +31,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           }
         }
       `
-    )
+      )
       .then(result => {
         if (result.errors) {
           console.log(result.errors)
@@ -80,30 +85,33 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             }
           `
         ).then(result => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
-        }
-        const projects = result.data.allWordpressWpWork.edges
-        const ProjectTemplate = path.resolve(`./src/templates/project.jsx`)
-        _.each(projects, project => {
-          createPage({
-            path: `/${project.node.slug}/`,
-            component: slash(ProjectTemplate),
-            context: {
-              slug: project.node.slug
-            }
-          })
+          if (result.errors) {
+            console.log(result.errors)
+            reject(result.errors)
+          }
+          const projects = result.data.allWordpressWpWork.edges
+          const ProjectTemplate = path.resolve(`./src/templates/project.jsx`)
+          _.each(projects, project => {
+            createPage({
+              path: `/${project.node.slug}/`,
+              component: slash(ProjectTemplate),
+              context: {
+                slug: project.node.slug
+              }
+            })
+          });
+          resolve();
         });
-      resolve();
-    });
+      })
   })
-})
 }
 
 
 
-exports.modifyWebpackConfig = ({ config, stage }) => {
+exports.modifyWebpackConfig = ({
+  config,
+  stage
+}) => {
   if (stage === 'build-javascript') {
     config.plugin('Lodash', webpackLodashPlugin, null)
   }

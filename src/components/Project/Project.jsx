@@ -1,12 +1,10 @@
 import React from 'react';
 import Link from 'gatsby-link';
 
-const project = (props) => {
+const project = props => {
   const { slug, sourceurl, title, subtitle } = props;
   return (
-    <Link
-      to={`/${slug}`}
-    >
+    <Link to={`/${slug}`}>
       <figure>
         <img src={sourceurl} />
         <figcaption>

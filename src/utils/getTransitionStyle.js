@@ -17,7 +17,10 @@ const getTransitionStyles = timeout => {
   }
 }
 
-const getTransitionStyle = ({ timeout, status }) =>
+const getTransitionStyle = ({
+    timeout,
+    status
+  }) =>
   getTransitionStyles(timeout)[status]
 
 export default getTransitionStyle
